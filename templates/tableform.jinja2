@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="\static\style.css">
+    <title>Form Demo</title>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#mytable').dataTable();
+        })
+    </script>
+</head>
+<body>
+<form id="myform" action="/add" method="POST">
+    {{ form.csrf }}
+    <div id="wrapper" class="input text">
+        {{ form.name.label }} {{ form.name }}
+        {{ form.lname.label }} {{ form.lname }}
+        {{ form.age.label }} {{ form.age }}
+        {{ form.address.label }} {{ form.address }}
+        <input class="action-button" name="Add" type="submit" value="Add User"/>
+    </div>
+</form>
+<div>
+    <table id="mytable">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for eachresult in results %}
+            <form id="myform" action="/delete" method="POST">
+                {{ form.csrf }}
+                <tr>
+                    <td> {{ eachresult.First_Name }}</td>
+                    <td> {{ eachresult.Last_Name }}</td>
+                    <td> {{ eachresult.Age }}</td>
+                    <td> {{ eachresult.Address }}</td>
+                    <td>
+                        <input type="hidden" name="pid" value="{{ eachresult.id }}">
+                        <input onclick="deleted()" class="action-button" name="Delete" type="submit" value="Delete"/>
+                        <button class="lin"><a class="lin"
+                                               href="{{ request.route_url('edit', uid=eachresult.id) }}">
+                            Edit
+                        </a></button>
+
+
+                    </td>
+                </tr>
+
+            </form>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

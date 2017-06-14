@@ -1,0 +1,72 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+
+html {
+    height: 100%;
+    background: linear-gradient(rgba(54, 196, 115, 0.6), rgba(69, 182, 95, 0.6));
+}
+
+body {
+    font-family: 'Montserrat', arial, verdana, serif;
+}
+
+#myform.action-button:hover, #myform .action-button:active, #myform .action-button:focus {
+    background: #43A047;
+}
+
+.action-button {
+    outline: 0;
+    background: #4CAF50;
+    width: 100px;
+    border: 0;
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all;
+    transition: all;
+    cursor: pointer;
+}
+.lin {
+    outline: 0;
+    background: #4CAF50;
+    width: 100px;
+    text-decoration: none;
+    border: 0;
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all;
+    transition: all;
+    cursor: pointer;
+}
+#wrapper {
+    position: relative;
+    background: #FFFFFF;
+    margin: 0px auto 50px;
+    padding: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+table th {
+     cursor: pointer;
+
+    font-weight: normal;
+    padding: 5px;
+    border: 1px solid black;
+    background: #6d9e7a;
+    color: black;
+}
+
+table td {
+    background: #c8c8c8;
+    padding: 5px;
+    border: 1px solid green;
+}
