@@ -40,7 +40,14 @@ class Table(object):
         users = DBSession.query(User).all()
         return dict(form=form, results=users)
 
-
+    @view_config(route_name='delete', renderer='templates/tableform.jinja2')
+    def delete(self):
+        uid = self.request.matchdict['uid']
+        form = ReusableForm()
+        DBSession.query(User).filter_by(id=uid).delete()
+        transaction.commit()
+        users = DBSession.query(User).all()
+        return dict(form=form, results=users)
 
     @view_config(route_name='edit',
                 renderer='templates/wikipage_addedit.pt')
@@ -89,15 +96,6 @@ def add(request):
         return dict(form=form, results=users)
 
 
-@view_config(route_name='delete', request_method='POST', renderer='templates/tableform.jinja2')
-def delete(request):
-        form = ReusableForm()
-        if request.method == 'POST':
-            pid = request.params['pid']
-            DBSession.query(User).filter_by(id=pid).delete()
-            transaction.commit()
-        users = DBSession.query(User).all()
-        return dict(form=form, results=users)
 
 
 

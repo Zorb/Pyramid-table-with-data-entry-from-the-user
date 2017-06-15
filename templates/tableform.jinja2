@@ -38,26 +38,22 @@
         </thead>
         <tbody>
         {% for eachresult in results %}
-            <form id="myform" action="/delete" method="POST">
-                {{ form.csrf }}
                 <tr>
                     <td> {{ eachresult.First_Name }}</td>
                     <td> {{ eachresult.Last_Name }}</td>
                     <td> {{ eachresult.Age }}</td>
                     <td> {{ eachresult.Address }}</td>
                     <td>
-                        <input type="hidden" name="pid" value="{{ eachresult.id }}">
-                        <input onclick="deleted()" class="action-button" name="Delete" type="submit" value="Delete"/>
+                        <button class="lin"><a class="lin"
+                                               href="{{ request.route_url('delete', uid=eachresult.id) }}">
+                            Delete
+                        </a></button>
                         <button class="lin"><a class="lin"
                                                href="{{ request.route_url('edit', uid=eachresult.id) }}">
                             Edit
                         </a></button>
-
-
                     </td>
                 </tr>
-
-            </form>
         {% endfor %}
         </tbody>
     </table>

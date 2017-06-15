@@ -15,7 +15,7 @@ def main(global_config, **settings):
     config.include('pyramid_chameleon')
     config.add_route('home', '/')
     config.add_route('add', '/add')
-    config.add_route('delete', '/delete')
+    config.add_route('delete', '/delete/{uid}')
     config.add_route('edit', '/edit/{uid}')
     config.add_static_view('static', 'pyrtable:static', cache_max_age=3600)
     config.add_static_view('deform_static', 'deform:static/')
